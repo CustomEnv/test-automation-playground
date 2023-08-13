@@ -20,11 +20,11 @@
             <h1 class="text-success">The Playground</h1>
             <h3 class="text-success">an <strong>Application Under Test</strong></h3>
             <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/dineshvelhal/testautomation-playground" data-icon="octicon-star" 
-            data-show-count="true" aria-label="Star dineshvelhal/testautomation-playground on GitHub">Star</a>
+            <a class="github-button" href="https://github.com/EnvInc/dyatel-playground" data-icon="octicon-star"
+            data-show-count="true" aria-label="Star EnvInc/dyatel-playground on GitHub">Star</a>
             <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/dineshvelhal" data-show-count="true" 
-            aria-label="Follow @ntkme on GitHub">Follow @dineshvelhal</a>
+            <a class="github-button" href="https://github.com/VladimirPodolyan" data-show-count="true"
+            aria-label="Follow @ntkme on GitHub">@VladimirPodolyan</a>
         </header>
     </div>
     <div class="container shadow-lg"> <br>
@@ -213,24 +213,19 @@
                 class="fa fa-mobile mr-1 ml-3" aria-hidden="true"></i>Mobile-friendly <i class="fa fa-tablet mr-1 ml-3"
                 aria-hidden="true"></i>Tablet-friendly</h6> <br>
     </div> <br><br>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 1px !important;"> <a class="navbar-brand"
-            href="http://www.linkedin.com/in/dineshvelhal"><small class="font-weight-lighter">&copy; 2019 Dinesh Velhal
-            </small></a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"> <small class="font-weight-lighter text-light mr-3">Coordinates: </small></li>
-                <li class="nav-item"> <a href="http://www.linkedin.com/in/dineshvelhal"
-                        class="mr-3 fab fa-linkedin-in"></a></li>
-                <li class="nav-item"> <a href="https://twitter.com/dinesh_velhal" class="fab fa-twitter"></a></li>
-            </ul>
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-            <small>
-                <a class="btn btn-success btn-sm" href="attribution.html" role="button"><i class="fa fa-heart"></i> Thanks To</a> 
-                <a class="btn btn-light btn-sm" href="index.html" role="button"><i class="fa fa-home"></i> Home</a>
-            </small>
-        </form>
-    </nav>
+
+    <div id="included-content">
+        <!-- Included content will be inserted here -->
+    </div>
+
+    <script>
+        fetch('mixin/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('included-content').innerHTML = data;
+            });
+    </script>
+
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
