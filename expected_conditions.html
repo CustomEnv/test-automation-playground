@@ -9,7 +9,6 @@
 <body>
 
 
-
 <div class="container align-items-center text-center">
 
   <!--
@@ -33,7 +32,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">Min. Wait</span>
               </div>
-              <input type="number" class="form-control" placeholder="Min. Wait" id="min_wait" value="2">
+              <input class="form-control" id="min_wait" placeholder="Min. Wait" type="number" value="2">
               <div class="input-group-append">
                 <span class="input-group-text">sec.</span>
               </div>
@@ -42,7 +41,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">Max. Wait</span>
               </div>
-              <input type="number" class="form-control" placeholder="Max. Wait" id="max_wait" value="5">
+              <input class="form-control" id="max_wait" placeholder="Max. Wait" type="number" value="5">
               <div class="input-group-append">
                 <span class="input-group-text">sec.</span>
               </div>
@@ -71,16 +70,16 @@
       <div class="row align-items-center text-center">
         <div class="col-sm-4">
           <p>Test the JavaScript <strong>alert</strong> and <strong>prompt</strong></p>
-          <button type="button" class="btn btn-primary" id="alert_trigger">Show Alert</button>
-          <button type="button" class="btn btn-primary" id="prompt_trigger">Show Prompt</button>
+          <button class="btn btn-primary" id="alert_trigger" type="button">Show Alert</button>
+          <button class="btn btn-primary" id="prompt_trigger" type="button">Show Prompt</button>
           <p></p>
         </div>
         <div class="col-sm-8">
-          <h3 style="display: none" id="confirm_ok">Confirm response: <span
+          <h3 id="confirm_ok" style="display: none">Confirm response: <span
                   class="badge badge-success" id="confirm_ok_badge">OK</span></h3>
-          <h3 style="display: none" id="confirm_cancelled">Confirm response: <span
+          <h3 id="confirm_cancelled" style="display: none">Confirm response: <span
                   class="badge badge-danger" id="confirm_cancelled_badge">Cancelled</span></h3>
-          <h3 style="display: none" id="alert_handled"><span class="badge badge-success" id="alert_handled_badge">Alert
+          <h3 id="alert_handled" style="display: none"><span class="badge badge-success" id="alert_handled_badge">Alert
                                 handled</span></h3>
         </div>
       </div>
@@ -102,14 +101,14 @@
       <div class="row align-items-center text-center">
         <div class="col-sm-4">
           <p>Click the <strong>Trigger</strong> and an invisible button will be visible!</p>
-          <button type="button" class="btn btn-primary" id="visibility_trigger">Trigger</button>
+          <button class="btn btn-primary" id="visibility_trigger" type="button">Trigger</button>
           <p></p>
         </div>
         <div class="col-sm-8">
           <p>A clickable button will appear here after <strong>Trigger</strong> button is clicked.</p>
-          <button type="button" class="btn btn-danger" id="visibility_target" style="display: none"
-                  data-toggle="popover" title="Can you see me?"
-                  data-content="I just removed my invisibility cloak!!">Click Me
+          <button class="btn btn-danger" data-content="I just removed my invisibility cloak!!" data-toggle="popover" id="visibility_target"
+                  style="display: none" title="Can you see me?"
+                  type="button">Click Me
           </button>
         </div>
       </div>
@@ -131,15 +130,15 @@
       <div class="row align-items-center text-center">
         <div class="col-sm-4">
           <p>Click the <strong>Trigger</strong> and the spinner will disappear!</p>
-          <button type="button" class="btn btn-primary" id="invisibility_trigger">Trigger</button>
+          <button class="btn btn-primary" id="invisibility_trigger" type="button">Trigger</button>
           <p></p>
         </div>
         <div class="col-sm-8">
           <p>This spinner will disappear after <strong>Trigger</strong> button is clicked.</p>
-          <div class="spinner-border text-primary" role="status" id="invisibility_target">
+          <div class="spinner-border text-primary" id="invisibility_target" role="status">
             <span class="sr-only">Loading...</span>
           </div>
-          <p style="display: none" id="spinner_gone">Thank God that spinner is gone!</p>
+          <p id="spinner_gone" style="display: none">Thank God that spinner is gone!</p>
         </div>
       </div>
     </div>
@@ -161,16 +160,16 @@
         <div class="col-sm-4">
           <p>Click the <strong>Trigger</strong> and the <strong>Disabled Button</strong> will become
             active.</p>
-          <button type="button" class="btn btn-primary" id="enabled_trigger">Trigger</button>
+          <button class="btn btn-primary" id="enabled_trigger" type="button">Trigger</button>
           <p></p>
         </div>
         <div class="col-sm-8">
           <p class="text-left">After the <strong>Trigger</strong> button is clicked, this button will be
             active <br>and the <em>class</em> attribute will be <em>"btn btn-success"</em>.
           </p>
-          <button type="button" class="btn btn-danger" id="enabled_target" data-toggle="popover"
-                  title="Yay! I am super active now!" data-content="See, you just clicked me!!"
-                  disabled>Disabled
+          <button class="btn btn-danger" data-content="See, you just clicked me!!" data-toggle="popover" disabled
+                  id="enabled_target" title="Yay! I am super active now!"
+                  type="button">Disabled
             Button
           </button>
           <p></p>
@@ -193,7 +192,7 @@
     </div>
     <div class="card-body">
       <p>Click the <strong>Trigger</strong> and the Page Title will change to "My New Title!"</p>
-      <button type="button" class="btn btn-primary" id="page_title_trigger">Trigger</button>
+      <button class="btn btn-primary" id="page_title_trigger" type="button">Trigger</button>
     </div>
   </div>
 
@@ -213,14 +212,14 @@
         <div class="col-sm-6">
           <p>Click the <strong>Trigger</strong> to enter text in the textbox and change the button caption
           </p>
-          <button type="button" class="btn btn-primary" id="text_value_trigger">Trigger</button>
+          <button class="btn btn-primary" id="text_value_trigger" type="button">Trigger</button>
           <p></p>
         </div>
         <div class="col-sm-6 align-items-center">
           <form class="form-inline">
-            <input type="text" class="form-control" placeholder="Creator of C" id="wait_for_value">
-            <button class="btn btn-success" type="button" id="wait_for_text">
-              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            <input class="form-control" id="wait_for_value" placeholder="Creator of C" type="text">
+            <button class="btn btn-success" id="wait_for_text" type="button">
+              <span aria-hidden="true" class="spinner-grow spinner-grow-sm" role="status"></span>
             </button>
           </form>
         </div>
@@ -243,12 +242,12 @@
       <div class="row align-items-center text-center">
         <div class="col-sm-7">
           <p>Click the <strong>Trigger</strong> and a frame will appear after a few seconds</p>
-          <button type="button" class="btn btn-primary" id="wait_for_frame">Trigger</button>
+          <button class="btn btn-primary" id="wait_for_frame" type="button">Trigger</button>
           <p></p>
         </div>
         <div class="col-sm-5 align-items-center">
           <p></p>
-          <div class="embed-responsive embed-responsive-21by9 shadow" style="display: none" id="frame">
+          <div class="embed-responsive embed-responsive-21by9 shadow" id="frame" style="display: none">
             <!--<iframe src="inner.html" name="frm" id="frm"></iframe>-->
           </div>
         </div>

@@ -98,7 +98,7 @@
           </div>
         </div>
         <div class="col-sm-6 p-3">
-          <h4 id="hover_validate" class="form-text text-success"></h4>
+          <h4 class="form-text text-success" id="hover_validate"></h4>
         </div>
       </div>
     </div>
@@ -114,15 +114,15 @@
     <div class="card-body">
       <div class="row align-items-center text-center">
         <div class="col-sm-3">
-          <button type="button" class="btn btn-primary" id="drag_source" draggable="true"
-                  ondragstart="drag(event)">Drop me on to the green
+          <button class="btn btn-primary" draggable="true" id="drag_source" ondragstart="drag(event)"
+                  type="button">Drop me on to the green
             box
           </button>
 
         </div>
         <div class="col-sm-9">
-          <div class="bg-success text-light shadow" id="drop_target" style="height: 100px;"
-               ondrop="drop(event)" ondragover="allowDrop(event)">
+          <div class="bg-success text-light shadow" id="drop_target" ondragover="allowDrop(event)"
+               ondrop="drop(event)" style="height: 100px;">
             <h3>Target</h3>
           </div>
         </div>
