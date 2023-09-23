@@ -2,84 +2,91 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="ie=edge" http-equiv="x-ua-compatible">
 
-    <meta name="description" content="Console Log Demo for Selenium 4 CDP">
-    <meta name="author" content="Dinesh Velhal">
+  <meta content="Console Log Demo for Selenium 4 CDP" name="description">
+  <meta content="Dinesh Velhal" name="author">
 
-    <title>Console Log Demo for Selenium 4 CDP</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- Material Design Bootstrap 
-    <link href="css/mdb.min.css" rel="stylesheet">-->
-    <!-- Your custom styles (optional) 
-    <link href="css/style.css" rel="stylesheet">-->
+  <title>Console Log Demo for Selenium 4 CDP</title>
+  <!-- Font Awesome -->
+  <link href="css/all.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- Material Design Bootstrap
+  <link href="css/mdb.min.css" rel="stylesheet">-->
+  <!-- Your custom styles (optional)
+  <link href="css/style.css" rel="stylesheet">-->
 </head>
 
 
-
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand abs" href="index.html">The Playground</a>
-    </nav>
+<div id="header">
+  <!-- Included content will be inserted here -->
+</div>
 
-    <br><br>
+<script>
+  fetch('mixin/header.html')
+           .then(response => response.text())
+           .then(data => {
+               document.getElementById('header').innerHTML = data;
+           });
+</script>
 
-    <div class="container align-items-center text-center">
+<br><br>
+
+<div class="container align-items-center text-center">
+  <br>
+  <div class="card text-center shadow border-success">
+    <div class="card-header">
+      <h2>Console Logs</h2>
+      <div class="col-sm-12 text-center">
+        This page creates various types of console log messages at the time of page load. <br>
+        This can be used to try the new CDP (Chrome DevTools Protocol) support in Selenium 4.
+        Using CDP feature, now you can access the console logs using Selenium.
+        <br><kbd class="bg-light text-body">This page generates the console logs as shown below:</kbd>
         <br>
-        <div class="card text-center shadow border-success">
-            <div class="card-header">
-                <h2>Console Logs</h2>
-                <div class="col-sm-12 text-center">
-                    This page creates various types of console log messages at the time of page load. <br>
-                    This can be used to try the new CDP (Chrome DevTools Protocol) support in Selenium 4.
-                    Using CDP feature, now you can access the console logs using Selenium.
-                    <br><kbd class="bg-light text-body">This page generates the console logs as shown below:</kbd>
-                    <br><button type="button" class="btn btn-primary" id="button">Write to console</button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="form-group">
-                    <img style="max-width: 100%; max-height: 100%;" src="console_logs.png" />
-                </div>
-            </div>
-            
-        </div>
-
-        <br>
+        <button class="btn btn-primary" id="button" type="button">Write to console</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <img src="console_logs.png" style="max-width: 100%; max-height: 100%;"/>
+      </div>
     </div>
 
-    <br><br><br><br>
+  </div>
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript 
-    <script type="text/javascript" src="js/mdb.min.js"></script>-->
+  <br>
+</div>
 
-    <script>
-        // All functions
-        $(document).ready(function () {
-            $("#button").click(function () {
-                console.log("This is a console.log output");
-                console.debug("This is a console.debug output");
-                console.error("This is a console.error output");
-                console.info("This is console.info output");
-                console.warn("This is console.warn output");
-                console.trace("This is console.trace output");
-                console.table(["apples", "oranges", "bananas"]);
-            });
-        });
-    </script>
+<br><br><br><br>
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<!-- Bootstrap tooltips -->
+<script src="js/popper.min.js" type="text/javascript"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<!-- MDB core JavaScript
+<script type="text/javascript" src="js/mdb.min.js"></script>-->
+
+<script>
+  // All functions
+  $(document).ready(function () {
+      $("#button").click(function () {
+          console.log("This is a console.log output");
+          console.debug("This is a console.debug output");
+          console.error("This is a console.error output");
+          console.info("This is console.info output");
+          console.warn("This is console.warn output");
+          console.trace("This is console.trace output");
+          console.table(["apples", "oranges", "bananas"]);
+      });
+  });
+</script>
 </body>
 
 </html>

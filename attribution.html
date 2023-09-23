@@ -2,62 +2,46 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <meta name="description" content="Sample Web Application for Test Automation">
-    <meta name="author" content="Dinesh Velhal">
 
-    <title>Attribution</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- Material Design Bootstrap 
-    <link href="css/mdb.min.css" rel="stylesheet">-->
-    <!-- Your custom styles (optional) 
-    <link href="css/style.css" rel="stylesheet">-->
+  <title>Attribution</title>
 </head>
 
 
-
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand abs" href="index.html">The Playground</a>
-    </nav>
 
-    <br>
-    <br>
-    <div class="container align-items-center text-center shadow-lg">
-        <h4 class="text-success">This site is based on</h4>
+<br>
+<br>
+<div class="container align-items-center text-center shadow-lg">
+  <h4 class="text-success">This site is based on</h4>
 
-        <div class="list-group" style="margin-bottom: 30px">
-            <a href="https://getbootstrap.com" class="list-group-item list-group-item-action" target="_blank">
-                Bootstrap
-            </a>
-            <a href="https://fontawesome.com/" class="list-group-item list-group-item-action" target="_blank">
-                Font-Awesome
-            </a>
-            <a href="https://bootswatch.com/cosmo/" class="list-group-item list-group-item-action" target="_blank">
-                Bootstrap theme by Thomas Park
-            </a>
-        </div>
-        <br>
-    </div>
-    <br><br><br><br>
+  <div class="list-group" style="margin-bottom: 30px">
+    <a class="list-group-item list-group-item-action" href="https://getbootstrap.com" target="_blank">
+      Bootstrap
+    </a>
+    <a class="list-group-item list-group-item-action" href="https://fontawesome.com/" target="_blank">
+      Font-Awesome
+    </a>
+    <a class="list-group-item list-group-item-action" href="https://bootswatch.com/cosmo/" target="_blank">
+      Bootstrap theme by Thomas Park
+    </a>
+  </div>
+  <br>
+</div>
 
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript 
-    <script type="text/javascript" src="js/mdb.min.js"></script>-->
+<div id="any-page-mixin">
+  <!-- Included content will be inserted here -->
+</div>
+
+<script>
+  fetch('mixin/any_page_mixin.html')
+           .then(response => response.text())
+           .then(data => {
+               document.getElementById('any-page-mixin').innerHTML = data;
+           });
+</script>
+
 </body>
 
 </html>

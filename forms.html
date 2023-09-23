@@ -2,413 +2,414 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
-    <meta name="description" content="Sample Web Application for Test Automation">
-    <meta name="author" content="Dinesh Velhal">
-    
-    <title>Form Interactions</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- Material Design Bootstrap 
-    <link href="css/mdb.min.css" rel="stylesheet">-->
-    <!-- Your custom styles (optional) 
-    <link href="css/style.css" rel="stylesheet">-->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="ie=edge" http-equiv="x-ua-compatible">
+
+  <meta content="Sample Web Application for Test Automation" name="description">
+  <meta content="Dinesh Velhal" name="author">
+
+  <title>Form Interactions</title>
+  <link href="css/all.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
 </head>
 
 
-
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand abs" href="index.html">The Playground</a>
-    </nav>
+<div id="header">
+  <!-- Included content will be inserted here -->
+</div>
 
-    <br>
-    <br>
+<script>
+  fetch('mixin/header.html')
+           .then(response => response.text())
+           .then(data => {
+               document.getElementById('header').innerHTML = data;
+           });
+</script>
 
-    <div class="container">
-        <div class="card text-center shadow border-success">
-            <div class="card-header">
-                <h3>Basic Form Controls</h3>
-                Interact with the form controls. The changed values will be shown below every element. This can be used
-                for validation in your autmated test.
-            </div>
-            <div class="card-body">
-                <form>
-                    <div class="form-row align-items-center">
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-sm" id="exp"
-                                    aria-describedby="expHelp" placeholder="years of automation experience">
-                                <span id="exp_help" class="form-text text-success"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="check_java" value="JAVA">
-                                    <label class="form-check-label" for="check_java">Java</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="check_python" value="PYTHON">
-                                    <label class="form-check-label" for="check_python">Python</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="check_javascript"
-                                        value="JAVASCRIPT">
-                                    <label class="form-check-label" for="check_javascript">JavaScript</label>
-                                </div>
-                                <span id="check_validate" class="form-text text-success"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="rad_selenium" value="SELENIUM"
-                                        name="tool">
-                                    <label class="form-check-label" for="rad_selenium">Selenium</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="rad_protractor" value="PROTRACTOR"
-                                        name="tool">
-                                    <label class="form-check-label" for="rad_protractor">Protractor</label>
-                                </div>
-                                <span id="rad_validate" class="form-text text-success"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row align-items-center">
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <label for="select_tool">Primary Skill</label>
-                                <select class="form-control form-control-sm" id="select_tool">
-                                    <option value="sel">Selenium</option>
-                                    <option value="pro">Protractor</option>
-                                    <option value="cyp">Cypress</option>
-                                </select>
-                                <span id="select_tool_validate" class="form-text text-success"></span>
-                            </div>
-                        </div>
+<br>
+<br>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <label for="select_lang">Choose Language</label>
-                                <select class="form-control form-control-sm" id="select_lang" size="4" multiple>
-                                    <option value="java">Java</option>
-                                    <option value="python">Python</option>
-                                    <option value="javascript">JavaScript</option>
-                                    <option value="typescript">TypeScript</option>
-                                </select>
-                                <span id="select_lang_validate" class="form-text text-success"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <textarea class="form-control form-control-sm" id="notes" rows="6"
-                                    placeholder="Notes"></textarea>
-                                <span id="area_notes_validate" class="form-text text-success"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row align-items-center">
-                        <div class="col-md-4 mb-4">
-                            <label for="common_sense">Mandatory Skill (Read-Only textbox)</label>
-                            <input class="form-control form-control-sm" type="text" id="common_sense"
-                                placeholder="Common Sense" readonly>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="german">
-                                <label class="custom-control-label" for="german">Speaks German?</label>
-                            </div>
-                            <span id="german_validate" class="form-text text-success"></span>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <label for="fluency">German Fluency Level</label>
-                            <input type="range" class="custom-range" min="0" max="5" id="fluency">
-                            <span id="fluency_validate" class="form-text text-success"></span>
-                        </div>
-                    </div>
-
-                    <div class="form-row align-items-center">
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <br>
-                                <label for="upload_cv">Upload CV (SINGLE FILE)</label>
-                                <input type="file" class="form-control-file bg-light" id="upload_cv"
-                                    aria-describedby="fileHelp">
-                                <span id="validate_cv" class="form-text text-success"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="form-group">
-                                <br>
-                                <label for="upload_files">Upload Certificates (MULTIPLE FILES)</label>
-                                <input type="file" class="form-control-file bg-light" id="upload_files"
-                                    aria-describedby="fileHelp" multiple>
-                                <span id="validate_files" class="form-text text-success"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <label for="salary">Current Salary (Disabled TextBox)</label>
-                            <input class="form-control form-control-sm" type="text" id="salary" placeholder="You should not provide this" disabled>
-                            <input class="form-control form-control-sm" type="text" id="invisible" placeholder="You cannot see this" hidden>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="card text-center shadow border-success">
-            <div class="card-header">
-                <h3>Form with Validations</h3>
-                Every field, if empty, throws validation error when the form is submitted. The error text can be
-                validated
-                in your automated test.
-            </div>
-            <div class="card-body">
-                <form class="needs-validation" novalidate>
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-                            <div class="invalid-feedback" id="invalid_city">
-                                Please provide a valid city.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <input type="text" class="form-control" id="validationCustom04" placeholder="State"
-                                required>
-                            <div class="invalid-feedback" id="invalid_state">
-                                Please provide a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-                            <div class="invalid-feedback" id="invalid_zip">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                            <label class="form-check-label" for="invalidCheck">
-                                Agree to terms and conditions
-                            </label>
-                            <div class="invalid-feedback" id="invalid_terms">
-                                You must agree before submitting.
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Submit Form</button>
-                </form>
-
-                <script>
-                    (function () {
-                        'use strict';
-                        window.addEventListener('load', function () {
-                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                            var forms = document.getElementsByClassName('needs-validation');
-                            // Loop over them and prevent submission
-                            var validation = Array.prototype.filter.call(forms, function (form) {
-                                form.addEventListener('submit', function (event) {
-                                    if (form.checkValidity() === false) {
-                                        event.preventDefault();
-                                        event.stopPropagation();
-                                    }
-                                    form.classList.add('was-validated');
-                                }, false);
-                            });
-                        }, false);
-                    })();
-                </script>
-            </div>
-        </div>
-
-        <br>
-
-        <!--<div class="card text-center shadow border-success">
-            <div class="card-header">
-                <h3>HTML5 Controls</h3>
-            </div>
-            <div class="card-body">
-                <div class="form-group">
-
-                </div>
-            </div>
-        </div>
-
-        <br>
-
-
-
-        <br>-->
-
-        <div class="card text-center shadow border-success">
-            <div class="card-header">
-                <h3>Non-English Labels and Locators</h3>
-                These elements have non-English identifiers and visible text. You can test if your automation code
-                supports non-english characters in the locators and visible text.
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="md-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-sm" id="नाव"
-                                    aria-describedby="expHelp">
-                                <label for="नाव" class="">आपले नांव लिहा</label>
-                                <span id="नाव_तपासा" class="form-text text-success"></span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <form>
-                            <div class="form-group">
-                                <div class="form-check form-check-inline" style="padding-right: 30px;">
-                                    <input class=" form-check-input" type="checkbox" id="मराठी" value="मराठी">
-                                    <label class="form-check-label" for="मराठी">मराठी</label>
-                                </div>
-                                <div class="form-check form-check-inline" style="padding-right: 30px;">
-                                    <input class="form-check-input" type="checkbox" id="ગુજરાતી" value="ગુજરાતી">
-                                    <label class="form-check-label" for="ગુજરાતી">ગુજરાતી</label>
-                                </div>
-                                <div class="form-check form-check-inline" style="padding-right: 30px;">
-                                    <input class="form-check-input" type="checkbox" id="ਪੰਜਾਬੀ" value="ਪੰਜਾਬੀ">
-                                    <label class="form-check-label" for="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</label>
-                                </div>
-                                <span id="check_validate_non_english" class="form-text text-success"></span>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container">
+  <div class="card text-center shadow border-success">
+    <div class="card-header">
+      <h3>Basic Form Controls</h3>
+      Interact with the form controls. The changed values will be shown below every element. This can be used
+      for validation in your autmated test.
     </div>
+    <div class="card-body">
+      <form>
+        <div class="form-row align-items-center">
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+              <input aria-describedby="expHelp" class="form-control form-control-sm" id="exp"
+                     placeholder="years of automation experience" type="text">
+              <span class="form-text text-success" id="exp_help"></span>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" id="check_java" type="checkbox" value="JAVA">
+                <label class="form-check-label" for="check_java">Java</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" id="check_python" type="checkbox" value="PYTHON">
+                <label class="form-check-label" for="check_python">Python</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" id="check_javascript" type="checkbox"
+                       value="JAVASCRIPT">
+                <label class="form-check-label" for="check_javascript">JavaScript</label>
+              </div>
+              <span class="form-text text-success" id="check_validate"></span>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" id="rad_selenium" name="tool" type="radio"
+                       value="SELENIUM">
+                <label class="form-check-label" for="rad_selenium">Selenium</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" id="rad_protractor" name="tool" type="radio"
+                       value="PROTRACTOR">
+                <label class="form-check-label" for="rad_protractor">Protractor</label>
+              </div>
+              <span class="form-text text-success" id="rad_validate"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row align-items-center">
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+              <label for="select_tool">Primary Skill</label>
+              <select class="form-control form-control-sm" id="select_tool">
+                <option value="sel">Selenium</option>
+                <option value="pro">Protractor</option>
+                <option value="cyp">Cypress</option>
+              </select>
+              <span class="form-text text-success" id="select_tool_validate"></span>
+            </div>
+          </div>
 
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+              <label for="select_lang">Choose Language</label>
+              <select class="form-control form-control-sm" id="select_lang" multiple size="4">
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+              </select>
+              <span class="form-text text-success" id="select_lang_validate"></span>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+                                <textarea class="form-control form-control-sm" id="notes" placeholder="Notes"
+                                          rows="6"></textarea>
+              <span class="form-text text-success" id="area_notes_validate"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row align-items-center">
+          <div class="col-md-4 mb-4">
+            <label for="common_sense">Mandatory Skill (Read-Only textbox)</label>
+            <input class="form-control form-control-sm" id="common_sense" placeholder="Common Sense"
+                   readonly type="text">
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="custom-control custom-switch">
+              <input class="custom-control-input" id="german" type="checkbox">
+              <label class="custom-control-label" for="german">Speaks German?</label>
+            </div>
+            <span class="form-text text-success" id="german_validate"></span>
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="fluency">German Fluency Level</label>
+            <input class="custom-range" id="fluency" max="5" min="0" type="range">
+            <span class="form-text text-success" id="fluency_validate"></span>
+          </div>
+        </div>
 
-
-    <br><br><br><br>
-
-    <div id="included-content">
-        <!-- Included content will be inserted here -->
+        <div class="form-row align-items-center">
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+              <br>
+              <label for="upload_cv">Upload CV (SINGLE FILE)</label>
+              <input aria-describedby="fileHelp" class="form-control-file bg-light" id="upload_cv"
+                     type="file">
+              <span class="form-text text-success" id="validate_cv"></span>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="form-group">
+              <br>
+              <label for="upload_files">Upload Certificates (MULTIPLE FILES)</label>
+              <input aria-describedby="fileHelp" class="form-control-file bg-light" id="upload_files"
+                     multiple type="file">
+              <span class="form-text text-success" id="validate_files"></span>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="salary">Current Salary (Disabled TextBox)</label>
+            <input class="form-control form-control-sm" disabled id="salary"
+                   placeholder="You should not provide this" type="text">
+            <input class="form-control form-control-sm" hidden id="invisible" placeholder="You cannot see this"
+                   type="text">
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <script>
-        fetch('mixin/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('included-content').innerHTML = data;
-            });
-    </script>
+  <br>
+
+  <div class="card text-center shadow border-success">
+    <div class="card-header">
+      <h3>Form with Validations</h3>
+      Every field, if empty, throws validation error when the form is submitted. The error text can be
+      validated
+      in your automated test.
+    </div>
+    <div class="card-body">
+      <form class="needs-validation" novalidate>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <input class="form-control" id="validationCustom03" placeholder="City" required type="text">
+            <div class="invalid-feedback" id="invalid_city">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <input class="form-control" id="validationCustom04" placeholder="State" required
+                   type="text">
+            <div class="invalid-feedback" id="invalid_state">
+              Please provide a valid state.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <input class="form-control" id="validationCustom05" placeholder="Zip" required type="text">
+            <div class="invalid-feedback" id="invalid_zip">
+              Please provide a valid zip.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" id="invalidCheck" required type="checkbox" value="">
+            <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback" id="invalid_terms">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit Form</button>
+      </form>
+
+      <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+      </script>
+    </div>
+  </div>
+
+  <br>
+
+  <!--<div class="card text-center shadow border-success">
+      <div class="card-header">
+          <h3>HTML5 Controls</h3>
+      </div>
+      <div class="card-body">
+          <div class="form-group">
+
+          </div>
+      </div>
+  </div>
+
+  <br>
 
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript 
-    <script type="text/javascript" src="js/mdb.min.js"></script>-->
 
-    <script>
-        $(document).ready(function () {
+  <br>-->
 
-            // textbox
-            $("#exp").on("change keyup paste click", function () {
-                $("#exp_help").text($(this).val());
-            });
+  <div class="card text-center shadow border-success">
+    <div class="card-header">
+      <h3>Non-English Labels and Locators</h3>
+      These elements have non-English identifiers and visible text. You can test if your automation code
+      supports non-english characters in the locators and visible text.
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="md-form">
+            <div class="form-group">
+              <input aria-describedby="expHelp" class="form-control form-control-sm" id="नाव"
+                     type="text">
+              <label class="" for="नाव">आपले नांव लिहा</label>
+              <span class="form-text text-success" id="नाव_तपासा"></span>
+            </div>
 
-            // checkbox
-            $("#check_java, #check_python, #check_javascript").on("change keyup click", function () {
-                $("#check_validate").text(
-                    (($("#check_java").prop("checked") ? $("#check_java").val() : "")
-                        + " "
-                        + ($("#check_python").prop("checked") ? $("#check_python").val() : "")
-                        + " "
-                        + ($("#check_javascript").prop("checked") ? $("#check_javascript").val() : "")).trim()
-                );
-            });
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <form>
+            <div class="form-group">
+              <div class="form-check form-check-inline" style="padding-right: 30px;">
+                <input class=" form-check-input" id="मराठी" type="checkbox" value="मराठी">
+                <label class="form-check-label" for="मराठी">मराठी</label>
+              </div>
+              <div class="form-check form-check-inline" style="padding-right: 30px;">
+                <input class="form-check-input" id="ગુજરાતી" type="checkbox" value="ગુજરાતી">
+                <label class="form-check-label" for="ગુજરાતી">ગુજરાતી</label>
+              </div>
+              <div class="form-check form-check-inline" style="padding-right: 30px;">
+                <input class="form-check-input" id="ਪੰਜਾਬੀ" type="checkbox" value="ਪੰਜਾਬੀ">
+                <label class="form-check-label" for="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</label>
+              </div>
+              <span class="form-text text-success" id="check_validate_non_english"></span>
+            </div>
 
-            // radio button
-            $("#rad_selenium, #rad_protractor").on("change keyup click", function () {
-                $("#rad_validate").text(
-                    ($("#rad_selenium").prop("checked") ? $("#rad_selenium").val() : "")
-                    + ""
-                    + ($("#rad_protractor").prop("checked") ? $("#rad_protractor").val() : "")
-                );
-            });
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-            // text area
-            $("#notes").on("change keyup paste click", function () {
-                $("#area_notes_validate").text($(this).val());
-            });
 
-            // dropdown 
-            $("#select_tool").on("change keyup click", function () {
-                $("#select_tool_validate").text($(this).children("option:selected").val());
-            });
+<br><br><br><br>
 
-            // multi-select
-            $("#select_lang").on("change keyup click", function () {
-                $("#select_lang_validate").text($(this).val());
-            });
+<div id="included-content">
+  <!-- Included content will be inserted here -->
+</div>
 
-            // Switch
-            $("#german").on("change keyup click", function () {
-                $("#german_validate").text($(this).prop("checked"));
-            });
+<script>
+  fetch('mixin/footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.getElementById('included-content').innerHTML = data;
+      });
+</script>
 
-            // Range slider
-            $("#fluency").on("change keyup click", function () {
-                $("#fluency_validate").text($(this).val());
-            });
 
-            // non-english textbox
-            $("#नाव").on("change keyup paste click", function () {
-                $("#नाव_तपासा").text($(this).val());
-            });
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<!-- Bootstrap tooltips -->
+<script src="js/popper.min.js" type="text/javascript"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<!-- MDB core JavaScript
+<script type="text/javascript" src="js/mdb.min.js"></script>-->
 
-            // non-english checkbox
-            $("#मराठी, #ગુજરાતી, #ਪੰਜਾਬੀ").on("change keyup click", function () {
-                $("#check_validate_non_english").text(
-                    (($("#मराठी").prop("checked") ? $("#मराठी").val() : "")
-                        + " "
-                        + ($("#ગુજરાતી").prop("checked") ? $("#ગુજરાતી").val() : "")
-                        + " "
-                        + ($("#ਪੰਜਾਬੀ").prop("checked") ? $("#ਪੰਜਾਬੀ").val() : "")).trim()
-                );
-            });
+<script>
+  $(document).ready(function () {
 
-            // file upload
-            $("#upload_cv").on("change", function (e) {
-                $("#validate_cv").text(e.target.files[0].name);
-            });
+      // textbox
+      $("#exp").on("change keyup paste click", function () {
+          $("#exp_help").text($(this).val());
+      });
 
-            // multi-file upload
-            $("#upload_files").on("change", function (e) {
-                var names = "", i = 0;
+      // checkbox
+      $("#check_java, #check_python, #check_javascript").on("change keyup click", function () {
+          $("#check_validate").text(
+              (($("#check_java").prop("checked") ? $("#check_java").val() : "")
+                  + " "
+                  + ($("#check_python").prop("checked") ? $("#check_python").val() : "")
+                  + " "
+                  + ($("#check_javascript").prop("checked") ? $("#check_javascript").val() : "")).trim()
+          );
+      });
 
-                for (i = 0; i < e.target.files.length; i++) {
-                    names += (" " + e.target.files[i].name);
-                };
+      // radio button
+      $("#rad_selenium, #rad_protractor").on("change keyup click", function () {
+          $("#rad_validate").text(
+              ($("#rad_selenium").prop("checked") ? $("#rad_selenium").val() : "")
+              + ""
+              + ($("#rad_protractor").prop("checked") ? $("#rad_protractor").val() : "")
+          );
+      });
 
-                $("#validate_files").text(names);
-            });
+      // text area
+      $("#notes").on("change keyup paste click", function () {
+          $("#area_notes_validate").text($(this).val());
+      });
 
-        });
-    </script>
+      // dropdown
+      $("#select_tool").on("change keyup click", function () {
+          $("#select_tool_validate").text($(this).children("option:selected").val());
+      });
+
+      // multi-select
+      $("#select_lang").on("change keyup click", function () {
+          $("#select_lang_validate").text($(this).val());
+      });
+
+      // Switch
+      $("#german").on("change keyup click", function () {
+          $("#german_validate").text($(this).prop("checked"));
+      });
+
+      // Range slider
+      $("#fluency").on("change keyup click", function () {
+          $("#fluency_validate").text($(this).val());
+      });
+
+      // non-english textbox
+      $("#नाव").on("change keyup paste click", function () {
+          $("#नाव_तपासा").text($(this).val());
+      });
+
+      // non-english checkbox
+      $("#मराठी, #ગુજરાતી, #ਪੰਜਾਬੀ").on("change keyup click", function () {
+          $("#check_validate_non_english").text(
+              (($("#मराठी").prop("checked") ? $("#मराठी").val() : "")
+                  + " "
+                  + ($("#ગુજરાતી").prop("checked") ? $("#ગુજરાતી").val() : "")
+                  + " "
+                  + ($("#ਪੰਜਾਬੀ").prop("checked") ? $("#ਪੰਜਾਬੀ").val() : "")).trim()
+          );
+      });
+
+      // file upload
+      $("#upload_cv").on("change", function (e) {
+          $("#validate_cv").text(e.target.files[0].name);
+      });
+
+      // multi-file upload
+      $("#upload_files").on("change", function (e) {
+          var names = "", i = 0;
+
+          for (i = 0; i < e.target.files.length; i++) {
+              names += (" " + e.target.files[i].name);
+          };
+
+          $("#validate_files").text(names);
+      });
+
+  });
+</script>
 </body>
 
 </html>
