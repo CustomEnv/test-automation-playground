@@ -67,10 +67,7 @@
 
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand abs" href="index.html">The Playground</a>
-    </nav>
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -157,36 +154,12 @@
         </div>
     </div>
 
-    <br>
-
-
-
-    <br><br><br><br>
-
-    <div id="included-content">
-        <!-- Included content will be inserted here -->
-    </div>
-
-    <script>
-        fetch('mixin/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('included-content').innerHTML = data;
-            });
-    </script>
-
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- JQuery-UI -->
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-
-    <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript 
-    <script type="text/javascript" src="js/mdb.min.js"></script>-->
+    <script src="js/footer.js"></script>
+    <script src="js/header.js"></script>
 
     <script>
         // All functions

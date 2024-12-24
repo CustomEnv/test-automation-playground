@@ -16,6 +16,7 @@
 
 <body>
     <div class="container align-items-center text-center">
+        <br><br>
         <header style="margin-bottom: 30px">
             <h1 class="text-success">The Playground</h1>
             <h3 class="text-success">an <strong>Application Under Test</strong></h3>
@@ -207,25 +208,31 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-4">
+                <div class="card border-success mb-3 shadow">
+                    <div class="card-header">
+                        <h5> Colored Blocks
+                            <div style="display: inline; float: right!important;">
+                                <i class="fa fa-desktop" aria-hidden="true"></i>
+                                <i class="fa fa-mobile" aria-hidden="true"></i>
+                                <i class="fa fa-tablet" aria-hidden="true"></i>
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Check various blocks for visual comparison</p>
+                        <a href="colored_blocks.html" class="btn btn-success">View Page</a>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-4"></div>
         </div><br>
         <h6> Compatibility Icons: <i class="fa fa-desktop mr-1 ml-1" aria-hidden="true"></i>Desktop-friendly <i
                 class="fa fa-mobile mr-1 ml-3" aria-hidden="true"></i>Mobile-friendly <i class="fa fa-tablet mr-1 ml-3"
                 aria-hidden="true"></i>Tablet-friendly</h6> <br>
-    </div> <br><br>
-
-    <div id="included-content">
-        <!-- Included content will be inserted here -->
     </div>
 
-    <script>
-        fetch('mixin/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('included-content').innerHTML = data;
-            });
-    </script>
-
+    <script src="js/footer.js"></script>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>

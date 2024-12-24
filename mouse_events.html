@@ -10,16 +10,8 @@
     <meta name="author" content="Dinesh Velhal">
 
     <title>Mouse Actions</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="css/all.css">
-    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- Material Design Bootstrap 
-    <link href="css/mdb.min.css" rel="stylesheet">-->
-    <!-- Your custom styles (optional) 
-    <link href="css/style.css" rel="stylesheet">-->
-
-    <!-- Added for the Hover drop-down menu -->
     <style>
         .dropbtn {
             background-color: #4CAF50;
@@ -67,13 +59,6 @@
 
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand abs" href="index.html">The Playground</a>
-    </nav>
-
-    <br><br>
-
     <div class="container align-items-center text-center">
         <br>
         <div class="card text-center shadow border-success">
@@ -151,36 +136,12 @@
         </div>
     </div>
 
-    <br>
-
-
-
-    <br><br><br><br>
-
-    <div id="included-content">
-        <!-- Included content will be inserted here -->
-    </div>
-
-    <script>
-        fetch('mixin/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('included-content').innerHTML = data;
-            });
-    </script>
-
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
+    <script src="js/footer.js"></script>
+    <script src="js/header.js"></script>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- JQuery-UI -->
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-
-    <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript 
-    <script type="text/javascript" src="js/mdb.min.js"></script>-->
 
     <script>
         // All functions

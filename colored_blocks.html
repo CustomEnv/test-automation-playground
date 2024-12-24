@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Colorful Card Blocks</title>
+
+    <!-- Link to custom CSS files -->
+    <link rel="stylesheet" href="css/all.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <style>
+        /* Custom styling for the cards */
+        .card {
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .card-1 {
+            background-color: #f44336;
+        }
+
+        .card-2 {
+            background-color: #4CAF50;
+        }
+
+        .card-3 {
+            background-color: #2196F3;
+        }
+
+        .card-4 {
+            background-color: #FFEB3B;
+        }
+
+        .card-5 {
+            background-color: #9C27B0;
+        }
+
+        .card-6 {
+            background-color: #FF9800;
+        }
+
+        .card-7 {
+            background-color: #3F51B5;
+        }
+
+        .card-8 {
+            background-color: #607D8B;
+        }
+
+        /* Ensure cards fit in a small viewport */
+        @media (max-width: 576px) {
+            .col-sm-3 {
+                flex: 0 0 45%; /* Ensure at least 4 cards fit without scrolling */
+                max-width: 45%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card card-1"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-2"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-3"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-4"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-5"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-6"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-7"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-8"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/footer.js"></script>
+    <script src="js/header.js"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+
+</html>
