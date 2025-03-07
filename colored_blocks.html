@@ -87,18 +87,6 @@
             cursor: pointer;
         }
 
-        /* Button at the bottom of the page */
-        .open-popup-btn {
-            transform: translateX(-50%);
-            background: blue;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-        }
-
         /* Prevent scrolling when popup is open */
         .no-scroll {
             position: fixed;
@@ -111,113 +99,68 @@
 </head>
 
 <body id="colored-blocks-page">
-    <div id="page-wrapper">
-        <div class="container mt-4">
-            <div class="row" id="row-1">
-                <div class="col-sm-3">
-                    <div class="card card-1" id="card-1"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-2" id="card-2"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-3" id="card-3"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-4" id="card-4"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-5" id="card-5"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-6" id="card-6"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-7" id="card-7"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-8" id="card-8"></div>
-                </div>
+    <div class="container mt-4">
+        <div class="row" id="row-1">
+            <div class="col-sm-3">
+                <div class="card card-1" id="card-1"></div>
             </div>
+            <div class="col-sm-3">
+                <div class="card card-2" id="card-2"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-3" id="card-3"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-4" id="card-4"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-5" id="card-5"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-6" id="card-6"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-7" id="card-7"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-8" id="card-8"></div>
+            </div>
+        </div>
 
-            <div style="height: 500px;"></div>
-            <h1 style="text-align: center;">Let’s see how your visual comparison performs</h1>
-            <h1 style="text-align: center;">after scrolling the page</h1>
-            <br>
-            <h1 style="text-align: center;">Go ahead—scroll down!</h1>
-            <div style="height: 700px;"></div>
+        <div style="height: 500px;"></div>
+        <h1 style="text-align: center;">Let’s see how your visual comparison performs</h1>
+        <h1 style="text-align: center;">after scrolling the page</h1>
+        <br>
+        <h1 style="text-align: center;">Go ahead—scroll down!</h1>
+        <div style="height: 700px;"></div>
 
-            <div class="row" id="row-2">
-                <div class="col-sm-3">
-                    <div class="card card-4" id="card-9"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-8" id="card-10"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-3" id="card-11"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-7" id="card-12"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-1" id="card-13"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-3" id="card-14"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-5" id="card-15"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-2" id="card-16"></div>
-                </div>
-                <button class="open-popup-btn col-sm-12" id="open-popup-button" onclick="openPopup()">Open Popup</button>
+        <div class="row" id="row-2">
+            <div class="col-sm-3">
+                <div class="card card-4" id="card-9"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-8" id="card-10"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-3" id="card-11"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-7" id="card-12"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-1" id="card-13"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-3" id="card-14"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-5" id="card-15"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-2" id="card-16"></div>
             </div>
         </div>
     </div>
-    <br><br><br><br>
-
-    <!-- Popup Overlay -->
-    <div class="overlay" id="popupOverlay">
-        <div class="popup" id="overlay-popup">
-            <h2>Overlay Popup</h2>
-            <p id="popup-text">This is a popup that disables scroll and breaks some page properties.</p>
-            <button class="close-btn" onclick="closePopup()">Close</button>
-        </div>
-    </div>
-
-    <script>
-        let scrollPosition = 0;
-
-        function openPopup() {
-            // Store scroll position
-            scrollPosition = window.scrollY;
-
-            // Lock the page visually in place by fixing the wrapper
-            const pageWrapper = document.getElementById("page-wrapper");
-            pageWrapper.style.marginTop = `-${scrollPosition}px`;
-            pageWrapper.style.paddingRight = "15px";
-            pageWrapper.classList.add("no-scroll");
-
-            // Show the popup
-            document.getElementById("popupOverlay").style.display = "flex";
-        }
-
-        function closePopup() {
-            // Hide the popup
-            document.getElementById("popupOverlay").style.display = "none";
-
-            // Restore scrolling
-            const pageWrapper = document.getElementById("page-wrapper");
-            pageWrapper.classList.remove("no-scroll");
-            pageWrapper.style.marginTop = "";
-            pageWrapper.style.paddingRight = "";
-
-            // Restore the original scroll position
-            window.scrollTo(0, scrollPosition);
-        }
-    </script>
 
     <script src="js/footer.js"></script>
     <script src="js/header.js"></script>

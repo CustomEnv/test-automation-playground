@@ -10,35 +10,125 @@
     <meta name="author" content="Dinesh Velhal">
 
     <title>Multiple Windows</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="css/all.css">
-    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- Material Design Bootstrap 
-    <link href="css/mdb.min.css" rel="stylesheet">-->
-    <!-- Your custom styles (optional) 
-    <link href="css/style.css" rel="stylesheet">-->
+    <style>
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        /* Prevent scrolling when popup is open */
+        .no-scroll {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 
 
-<body>
-    <div class="container text-center">
-        <div class="row">
-            <div class="col col-sm-6">
-                <a class="btn btn-primary" href="frame2.html" target="_blank" id="window1">Open New Window 1</a>
-            </div>
-            <div class="col col-sm-6">
-                <a class="btn btn-primary" href="frame4.html" target="_blank" id="window2">Open New Window 2</a>
+<body id="popups-page">
+    <div id="page-wrapper">
+        <div class="container text-center" style="height: 1400px;">
+            <div class="row">
+                <div class="col col-sm-4">
+                    <a class="btn btn-primary" href="frame2.html" target="_blank" id="window1">Open New Window 1</a>
+                </div>
+                <div class="col col-sm-4">
+                    <a class="btn btn-primary" href="frame4.html" target="_blank" id="window2">Open New Window 2</a>
+                </div>
             </div>
         </div>
-    </div>
+        <br>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col col-sm-4">
+                    <a class="btn btn-primary" onclick="openPopup()" id="open-popup-button">Open Popup</a>
+                </div>
+            </div>
+        </div>
 
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script src="js/footer.js"></script>
-    <script src="js/header.js"></script>
+        <div class="overlay" id="popupOverlay">
+            <div class="popup" id="overlay-popup">
+                <h2>Overlay Popup</h2>
+                <p id="popup-text">This is a popup that disables scroll and breaks some page properties.</p>
+                <button class="close-btn" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+
+        <script>
+            let scrollPosition = 0;
+
+            function openPopup() {
+                const header = document.getElementById('navbar-container');
+                const pageWrapper = document.getElementById("page-wrapper");
+                const footer = document.getElementById('footer');
+
+                // Store scroll position
+                scrollPosition = window.scrollY;
+
+                // Lock the page visually in place by fixing the wrapper
+                pageWrapper.style.marginTop = `-${scrollPosition}px`;
+                pageWrapper.style.paddingRight = "15px";
+                footer.style.paddingRight = "15px";
+
+                // Show the popup
+                document.getElementById("popupOverlay").style.display = "flex";
+                header.style.opacity = "0";
+            }
+
+            function closePopup() {
+                const header = document.getElementById('navbar-container');
+                const pageWrapper = document.getElementById("page-wrapper");
+                const footer = document.getElementById('footer');
+
+                // Hide the popup
+                document.getElementById("popupOverlay").style.display = "none";
+
+                // Restore scrolling
+                pageWrapper.style.marginTop = "";
+                pageWrapper.style.paddingRight = "";
+                footer.style.paddingRight = "";
+                header.style.opacity = "100";
+
+                // Restore the original scroll position
+                window.scrollTo(0, scrollPosition);
+            }
+        </script>
+
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script src="js/footer.js"></script>
+        <script src="js/header.js"></script>
+    </div>
 </body>
 
 </html>
