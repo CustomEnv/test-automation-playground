@@ -14,6 +14,18 @@
     <link href="css/bootstrap.css" rel="stylesheet">
 </head>
 
+<style>
+    .cover-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cover {
+        margin-top: -40px;
+    }
+</style>
+
 
 
 <body>
@@ -239,7 +251,7 @@
         Wait for frame to be available and then switch to it
         ********************************************
         -->
-        <div class="card text-center shadow  border-success">
+        <div class="card text-center shadow border-success">
             <div class="card-header">
                 <h3>Wait for frame to be available and then switch to it</h3>
             </div>
@@ -261,7 +273,45 @@
         </div>
 
         <br>
+
+        <!--
+        ********************************************
+        Wait for covered button to be uncovered
+        ********************************************
+        -->
+        <div class="card text-center shadow border-success">
+            <div class="card-header">
+                <h3>Wait for covered button to be uncovered</h3>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center text-center">
+                    <div class="col-sm-5">
+                        <p>Click the <strong>Trigger</strong> and the covered button will be uncovered!</p>
+                        <button type="button" class="btn btn-primary" id="covered_trigger">Trigger</button>
+                        <p></p>
+                    </div>
+                    <div class="col-sm-5 align-items-center">
+                        <p></p>
+                        <div class="cover-container">
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                id="covered_button"
+                            >Covered Button</button>
+                            <button
+                                type="button"
+                                class="btn btn-danger cover"
+                                style="height: 50px; width: 200px"
+                                id="cover"
+                            >Cover Button</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <br>
 
     <script src="js/footer.js"></script>
     <script src="js/header.js"></script>
@@ -270,6 +320,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
     <script>
+
         // sleep for "ms" milliseconds
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms * 1000));
@@ -420,6 +471,14 @@
                 //$('#frm').attr("src", $('#frm').attr("src"));
                 //document.getElementById("frm").contentDocument.location.reload(true);
 
+                finishWaitState($(this), origTarget);
+            });
+
+            $("#covered_trigger").click(async function () {
+                var ms = randomSeconds();
+                origTarget = setWaitState($(this), ms);
+                await sleep(ms);
+                $("#cover").hide();
                 finishWaitState($(this), origTarget);
             });
         });
