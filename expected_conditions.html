@@ -24,6 +24,19 @@
     .cover {
         margin-top: -40px;
     }
+
+    .panel {
+        width: 200px;
+        height: 100px;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 10px;
+    }
 </style>
 
 
@@ -309,6 +322,41 @@
                 </div>
             </div>
         </div>
+
+    <br>
+
+    <!--
+    ********************************************
+    Wait for blinking panel
+    ********************************************
+    -->
+    <div class="card text-center shadow border-success">
+        <div class="card-header">
+            <h3>Wait for blinking panel</h3>
+        </div>
+        <div class="card-body">
+            <div class="row align-items-center text-center">
+                <div class="col-sm-5">
+                    <div class="input-group mr-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Blink Interval</span>
+                        </div>
+                        <input type="number" class="form-control" id="interval-input" value="700" min="100">
+                        <div class="input-group-append">
+                            <span class="input-group-text">ms.</span>
+                        </div>
+                    </div>
+                    <p></p>
+                    <button class="btn btn-primary" onclick="startBlinking()" id="interval-button">Apply</button>
+                    <p></p>
+                </div>
+                <div class="col-sm-5 align-items-center" style="justify-content: flex-end; display: flex;">
+                    <div class="panel" id="blinking-panel">Blinking</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 
     <br>
@@ -482,6 +530,24 @@
                 finishWaitState($(this), origTarget);
             });
         });
+
+        let blinkInterval;
+        function startBlinking() {
+            clearInterval(blinkInterval); // Очистка предыдущего интервала
+
+            const panel = document.getElementById("blinking-panel");
+            const interval = parseInt(document.getElementById("interval-input").value, 10) || 500;
+
+            blinkInterval = setInterval(() => {
+                if (panel.style.display === "none") {
+                    panel.style = ""; // Очистка стиля для отображения
+                } else {
+                    panel.style.display = "none"; // Скрытие панели
+                }
+            }, interval);
+        }
+
+        startBlinking();
     </script>
 </body>
 
