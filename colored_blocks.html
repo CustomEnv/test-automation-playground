@@ -53,9 +53,47 @@
         /* Ensure cards fit in a small viewport */
         @media (max-width: 576px) {
             .col-sm-3 {
-                flex: 0 0 45%; /* Ensure at least 4 cards fit without scrolling */
+                flex: 0 0 45%;
                 max-width: 45%;
             }
+        }
+
+        /* Overlay popup styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        /* Prevent scrolling when popup is open */
+        .no-scroll {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
         }
     </style>
 </head>

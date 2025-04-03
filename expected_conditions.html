@@ -14,6 +14,31 @@
     <link href="css/bootstrap.css" rel="stylesheet">
 </head>
 
+<style>
+    .cover-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cover {
+        margin-top: -40px;
+    }
+
+    .panel {
+        width: 200px;
+        height: 100px;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+</style>
+
 
 
 <body>
@@ -239,7 +264,7 @@
         Wait for frame to be available and then switch to it
         ********************************************
         -->
-        <div class="card text-center shadow  border-success">
+        <div class="card text-center shadow border-success">
             <div class="card-header">
                 <h3>Wait for frame to be available and then switch to it</h3>
             </div>
@@ -261,7 +286,80 @@
         </div>
 
         <br>
+
+        <!--
+        ********************************************
+        Wait for covered button to be uncovered
+        ********************************************
+        -->
+        <div class="card text-center shadow border-success">
+            <div class="card-header">
+                <h3>Wait for covered button to be uncovered</h3>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center text-center">
+                    <div class="col-sm-5">
+                        <p>Click the <strong>Trigger</strong> and the covered button will be uncovered!</p>
+                        <button type="button" class="btn btn-primary" id="covered_trigger">Trigger</button>
+                        <p></p>
+                    </div>
+                    <div class="col-sm-5 align-items-center">
+                        <p></p>
+                        <div class="cover-container">
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                id="covered_button"
+                            >Covered Button</button>
+                            <button
+                                type="button"
+                                class="btn btn-danger cover"
+                                style="height: 50px; width: 200px"
+                                id="cover"
+                            >Cover Button</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <br>
+
+    <!--
+    ********************************************
+    Wait for blinking panel
+    ********************************************
+    -->
+    <div class="card text-center shadow border-success">
+        <div class="card-header">
+            <h3>Wait for blinking panel</h3>
+        </div>
+        <div class="card-body">
+            <div class="row align-items-center text-center">
+                <div class="col-sm-5">
+                    <div class="input-group mr-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Blink Interval</span>
+                        </div>
+                        <input type="number" class="form-control" id="interval-input" value="700" min="100">
+                        <div class="input-group-append">
+                            <span class="input-group-text">ms.</span>
+                        </div>
+                    </div>
+                    <p></p>
+                    <button class="btn btn-primary" onclick="startBlinking()" id="interval-button">Apply</button>
+                    <p></p>
+                </div>
+                <div class="col-sm-5 align-items-center" style="justify-content: flex-end; display: flex;">
+                    <div class="panel" id="blinking-panel">Blinking</div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    </div>
+
+    <br>
 
     <script src="js/footer.js"></script>
     <script src="js/header.js"></script>
@@ -270,6 +368,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
     <script>
+
         // sleep for "ms" milliseconds
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms * 1000));
@@ -422,7 +521,33 @@
 
                 finishWaitState($(this), origTarget);
             });
+
+            $("#covered_trigger").click(async function () {
+                var ms = randomSeconds();
+                origTarget = setWaitState($(this), ms);
+                await sleep(ms);
+                $("#cover").hide();
+                finishWaitState($(this), origTarget);
+            });
         });
+
+        let blinkInterval;
+        function startBlinking() {
+            clearInterval(blinkInterval); // Очистка предыдущего интервала
+
+            const panel = document.getElementById("blinking-panel");
+            const interval = parseInt(document.getElementById("interval-input").value, 10) || 500;
+
+            blinkInterval = setInterval(() => {
+                if (panel.style.display === "none") {
+                    panel.style = ""; // Очистка стиля для отображения
+                } else {
+                    panel.style.display = "none"; // Скрытие панели
+                }
+            }, interval);
+        }
+
+        startBlinking();
     </script>
 </body>
 
