@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="description" content="Sample Web Application for Test Automation">
+    <meta name="author" content="VladimirPodolian">
+
+    <title>Browser Storage Inspector</title>
+    <link rel="stylesheet" href="css/all.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <style>
+        .empty-row td {
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container align-items-center text-center">
+        <br>
+        <h2 class="text-success">Browser Storage Inspector</h2>
+        <p class="text-muted">Values update automatically every 500ms</p>
+    </div>
+
+    <div class="container">
+        <br>
+
+        <!--
+        ********************************************
+        Cookies
+        ********************************************
+        -->
+        <div class="card border-success mb-3 shadow">
+            <div class="card-header">
+                <h4>Cookies <span class="badge badge-success" id="cookies_count">0</span></h4>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cookies_table">
+                        <tr class="empty-row"><td colspan="2" class="text-center">No cookies</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--
+        ********************************************
+        Local Storage
+        ********************************************
+        -->
+        <div class="card border-success mb-3 shadow">
+            <div class="card-header">
+                <h4>Local Storage <span class="badge badge-success" id="local_storage_count">0</span></h4>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Key</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="local_storage_table">
+                        <tr class="empty-row"><td colspan="2" class="text-center">No items</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--
+        ********************************************
+        Session Storage
+        ********************************************
+        -->
+        <div class="card border-success mb-3 shadow">
+            <div class="card-header">
+                <h4>Session Storage <span class="badge badge-success" id="session_storage_count">0</span></h4>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Key</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="session_storage_table">
+                        <tr class="empty-row"><td colspan="2" class="text-center">No items</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <script src="js/footer.js"></script>
+    <script src="js/header.js"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script>
+        function parseCookies() {
+            if (!document.cookie) return {};
+            return document.cookie.split(';').reduce(function (acc, pair) {
+                var idx = pair.indexOf('=');
+                if (idx === -1) return acc;
+                var name = pair.slice(0, idx).trim();
+                var value = decodeURIComponent(pair.slice(idx + 1).trim());
+                acc[name] = value;
+                return acc;
+            }, {});
+        }
+
+        function renderTable(tbodyId, countId, items, nameAttr) {
+            var tbody = document.getElementById(tbodyId);
+            var keys = Object.keys(items).sort();
+
+            document.getElementById(countId).textContent = keys.length;
+
+            if (keys.length === 0) {
+                tbody.innerHTML = '<tr class="empty-row"><td colspan="2" class="text-center">No items</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = keys.map(function (key) {
+                return '<tr data-' + nameAttr + '="' + key + '">' +
+                    '<td class="' + tbodyId + '_key">' + key + '</td>' +
+                    '<td class="' + tbodyId + '_value">' + items[key] + '</td>' +
+                    '</tr>';
+            }).join('');
+        }
+
+        function getStorageItems(storage) {
+            var items = {};
+            for (var i = 0; i < storage.length; i++) {
+                var key = storage.key(i);
+                items[key] = storage.getItem(key);
+            }
+            return items;
+        }
+
+        function refreshAll() {
+            renderTable('cookies_table', 'cookies_count', parseCookies(), 'cookie-name');
+            renderTable('local_storage_table', 'local_storage_count', getStorageItems(localStorage), 'ls-key');
+            renderTable('session_storage_table', 'session_storage_count', getStorageItems(sessionStorage), 'ss-key');
+        }
+
+        setInterval(refreshAll, 500);
+        refreshAll();
+    </script>
+
+</body>
+
+</html>
